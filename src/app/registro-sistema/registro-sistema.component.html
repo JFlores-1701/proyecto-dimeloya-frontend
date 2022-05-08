@@ -1,0 +1,128 @@
+<!-- CONTENEDOR PRINCIPAL-->
+<div class="container d-flex align-items-center" style="height: 100vh; background-color: #aec1ba">
+
+  <!-- CONTENEDOR SECUNDARIO -->
+  <div class="container p-0" style="height: 80vh; background-color: white;">
+
+    <!-- BOTON CERRAR/REGRESAR -->
+    <div class="d-flex justify-content-end col pt-3 pe-3">
+      <button class="btn btn-primary" style="background-color: #cf755a; border: #cf755a; border-radius: 50%;"
+        (click)="irInicio()">X</button>
+    </div>
+
+    <!-- TITULO -->
+    <div class="d-flex justify-content-center">
+      <h1>Registro</h1>
+    </div>
+
+    <!-- SUBTITULO -->
+    <div class="d-flex justify-content-center mt-2">
+      <p class="me-2">¿Ya tienes una cuenta?</p>
+      <p style="color: #cf755a;" (click)="irIngresar()">Ingresa aquí</p>
+    </div>
+
+    <!-- CONTENEDOR FORMULARIO -->
+    <div class="col">
+
+      <!-- FORMULARIO -->
+      <form class="mx-4" [formGroup]="formCliente" novalidate>
+
+        <!-- NOMBRE -->
+        <div class="form-floating mb-3">
+
+          <input type="text" class="form-control" id="floatingFirstName" placeholder="Nombres"
+            style="background-color: #ededed;" formControlName="nomCliente"
+            [class.is-invalid]="fieldNombreCliente?.invalid && fieldNombreCliente?.touched" autocomplete="off">
+          <label for="floatingFirstName">Nombres</label>
+
+          <div class='invalid-feedback' *ngIf='fieldNombreCliente?.invalid'>
+            <ng-container *ngIf="fieldNombreCliente?.hasError('required')">
+              {{msg}}
+            </ng-container>
+            <ng-container *ngIf="fieldNombreCliente?.hasError('pattern')">
+              No se aceptan números o caracteres especiales
+            </ng-container>
+          </div>
+
+        </div>
+
+        <!-- APELLIDO -->
+        <div class="form-floating mb-3">
+
+          <input type="text" class="form-control" id="floatingLastName" placeholder="Apellidos"
+            style="background-color: #ededed;" formControlName="apeCliente"
+            [class.is-invalid]="fieldApellidoCliente?.invalid && fieldApellidoCliente?.touched">
+          <label for="floatingLastName">Apellidos</label>
+
+          <div class='invalid-feedback' *ngIf='fieldApellidoCliente?.invalid'>
+            <ng-container *ngIf="fieldApellidoCliente?.hasError('required')">
+              {{msg}}
+            </ng-container>
+            <ng-container *ngIf="fieldApellidoCliente?.hasError('pattern')">
+              No se aceptan números o caracteres especiales
+            </ng-container>
+          </div>
+
+        </div>
+
+        <!-- CORREO -->
+        <div class="form-floating mb-3">
+
+          <input type="email" class="form-control" id="floatingInput" placeholder="Email"
+            style="background-color: #ededed;" formControlName="emailCliente"
+            [class.is-invalid]="fieldCorreoElectronico?.invalid && fieldCorreoElectronico?.touched">
+          <label for="floatingInput">Email</label>
+
+          <div class='invalid-feedback' *ngIf='fieldCorreoElectronico?.invalid'>
+            <ng-container *ngIf="fieldCorreoElectronico?.hasError('required')">
+              {{msg}}
+            </ng-container>
+          </div>
+
+        </div>
+
+        <!-- CONTRASEÑA -->
+        <div class="form-floating mb-3">
+
+          <input type="password" class="form-control" id="floatingPassword" placeholder="Contraseña"
+            style="background-color: #ededed;" formControlName="passCliente"
+            [class.is-invalid]="fieldContrasena?.invalid && fieldContrasena?.touched">
+          <label for="floatingPassword">Contraseña</label>
+
+          <div class='invalid-feedback' *ngIf='fieldContrasena?.invalid'>
+            <ng-container *ngIf="fieldContrasena?.hasError('required')">
+              {{msg}}
+            </ng-container>
+          </div>
+
+        </div>
+
+        <!-- REP CONTRASEÑA -->
+        <div class="form-floating">
+
+          <input type="password" class="form-control" id="floatingRepPassword" placeholder="Repetir Contraseña"
+            style="background-color: #ededed;" formControlName="repPassCliente"
+            [class.is-invalid]="fieldRepContrasena?.invalid && fieldRepContrasena?.touched">
+          <label for="floatingRepPassword">Repetir Contraseña</label>
+
+          <div class='invalid-feedback' *ngIf='fieldRepContrasena?.invalid'>
+            <ng-container *ngIf="fieldRepContrasena?.hasError('required')">
+              {{msg}}
+            </ng-container>
+          </div>
+
+        </div>
+
+        <!-- BOTON REGISTRO -->
+        <div class="my-3">
+          <button class="form-control btn btn-primary py-2" style="background-color: #cf755a; border: #cf755a;"
+            (click)="registrarUsuario()">Registrarse</button>
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+</div>

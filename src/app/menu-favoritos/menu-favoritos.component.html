@@ -1,0 +1,95 @@
+<!-- PLANTILLA DE OPCION MENU -->
+
+<!-- CONTENEDOR PRINCIPAL -->
+<div class="container">
+  <!-- BARRA DE MENÚ -->
+  <div class="col pt-3 sticky-top" style="background-color: #C4C4C4;">
+
+    <!-- BARRA DE MENÚ -->
+    <div class="row px-2">
+
+      <div class="col-1"></div>
+
+      <!-- ITEM MENU -->
+      <div class="col-2" (click)="irHome()">
+
+        <div class="col d-flex flex-column mb-3">
+
+          <div class="d-flex justify-content-center">
+            <mat-icon class="notSelected">home</mat-icon>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- ITEM MENU -->
+      <div class="col-2" (click)="irNotificaciones()">
+
+        <div class="col d-flex flex-column mb-3">
+
+          <div class="d-flex justify-content-center">
+            <mat-icon class="notSelected">notifications_none</mat-icon>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- ITEM MENU -->
+      <div class="col-2" (click)="irBuscar()">
+
+        <div class="d-flex flex-column">
+
+          <div class="d-flex justify-content-center">
+            <mat-icon class="notSelected">search</mat-icon>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- ITEM MENU -->
+      <div class="col-2 border-bottom border-4 border-danger">
+
+        <div class="d-flex flex-column mb-3">
+
+          <div class="d-flex justify-content-center">
+            <mat-icon class="selected">stars</mat-icon>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- ITEM MENU -->
+      <div class="col-2" (click)="irMas()">
+
+        <div class="d-flex flex-column">
+
+          <div class="d-flex justify-content-center">
+            <mat-icon class="notSelected">menu</mat-icon>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- COLSPAN -->
+      <div class="col-1"></div>
+
+    </div>
+
+  </div>
+
+  <!-- CONTENEDOR SECUNDARIO -->
+  <div class="col">
+    <!-- CONTENIDO -->
+
+    <div class="row pt-5">
+      <p class="text-center">CONTENIDO PANTALLA FAVORITOS</p>
+    </div>
+
+  </div>
+
+</div>

@@ -1,0 +1,139 @@
+<!-- CONTENEDOR PRINCIPAL -->
+<div class="container">
+
+  <!-- CONTENEDOR DE MENÚ -->
+  <div class="col pt-3 sticky-top" style="background-color: #C4C4C4;">
+
+    <!-- BARRA DE MENU -->
+    <div class="row px-2">
+
+      <!-- COLSPAN -->
+      <div class="col-1"></div>
+
+      <!-- ITEM MENU -->
+      <div class="col-2 border-bottom border-4 border-danger">
+
+        <div class="col d-flex flex-column mb-3">
+
+          <div class="d-flex justify-content-center">
+            <mat-icon class="selected">home</mat-icon>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- ITEM MENU -->
+      <div class="col-2" (click)="irNotificaciones()">
+
+        <div class="col d-flex flex-column mb-3">
+
+          <div class="d-flex justify-content-center">
+            <mat-icon class="notSelected">notifications_none</mat-icon>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- ITEM MENU -->
+      <div class="col-2" (click)="irBuscar()">
+
+        <div class="d-flex flex-column">
+
+          <div class="d-flex justify-content-center">
+            <mat-icon class="notSelected">search</mat-icon>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- ITEM MENU -->
+      <div class="col-2" (click)="irFavoritos()">
+
+        <div class="d-flex flex-column">
+
+          <div class="d-flex justify-content-center">
+            <mat-icon class="notSelected">stars</mat-icon>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- ITEM MENU -->
+      <div class="col-2" (click)="irMas()">
+
+        <div class="d-flex flex-column">
+
+          <div class="d-flex justify-content-center">
+            <mat-icon class="notSelected">menu</mat-icon>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- COLSPAN -->
+      <div class="col-1"></div>
+
+    </div>
+
+  </div>
+
+  <!-- CONTENEDOR SECUNDARIO -->
+  <div class="col">
+
+    <h2 class="ms-2 mt-3 fw-bold">Inicio</h2>
+
+    <!-- CADA NOTICIA -->
+    <div class="card mt-4 mx-4">
+      <div class="card-body">
+
+        <div class="col-auto d-flex">
+          <div class="col-3">
+            <img src="assets/img/logo.jfif" width="70px">
+          </div>
+
+          <div class="col-9 d-flex justify-content-center">
+            <h2>Nombre Restaurante</h2>
+          </div>
+        </div>
+
+        <p class="card-text my-3" style="text-align: justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+          Aliquam enim,
+          harum! Eaque earum ex id ipsa perferendis tempore temporibus voluptate voluptatum? Consequuntur
+          modi numquam obcaecati, provident quia quis quisquam sint.</p>
+
+        <img src="https://pbs.twimg.com/media/EgcCf8TXcAA7HPZ.png" alt="" width="100%">
+
+      </div>
+    </div>
+
+    <div class="card mt-4 mx-4">
+      <div class="card-body">
+
+        <div class="col-auto d-flex">
+          <div class="col-3">
+            <img src="assets/img/logo.jfif" width="70px">
+          </div>
+
+          <div class="col-9 d-flex justify-content-center">
+            <h2>Nombre Restaurante</h2>
+          </div>
+        </div>
+
+        <p class="card-text my-3" style="text-align: justify">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+          Aliquam enim,
+          harum! Eaque earum ex id ipsa perferendis tempore temporibus voluptate voluptatum? Consequuntur
+          modi numquam obcaecati, provident quia quis quisquam sint.</p>
+
+        <img src="https://pbs.twimg.com/media/EgcCf8TXcAA7HPZ.png" alt="" width="100%">
+
+      </div>
+    </div>
+
+  </div>
+
+</div>

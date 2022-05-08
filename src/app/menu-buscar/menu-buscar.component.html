@@ -1,0 +1,127 @@
+<!-- PLANTILLA DE OPCION MENU -->
+
+<!-- CONTENEDOR PRINCIPAL -->
+<div class="container">
+  <!-- BARRA DE MENÚ -->
+  <div class="col pt-3 sticky-top" style="background-color: #C4C4C4;">
+
+    <!-- BARRA DE MENÚ -->
+    <div class="row px-2">
+
+      <div class="col-1"></div>
+
+      <!-- ITEM MENU -->
+      <div class="col-2" (click)="irHome()">
+
+        <div class="col d-flex flex-column mb-3">
+
+          <div class="d-flex justify-content-center">
+            <mat-icon class="notSelected">home</mat-icon>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- ITEM MENU -->
+      <div class="col-2" (click)="irNotificaciones()">
+
+        <div class="col d-flex flex-column mb-3">
+
+          <div class="d-flex justify-content-center">
+            <mat-icon class="notSelected">notifications_none</mat-icon>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- ITEM MENU -->
+      <div class="col-2 border-bottom border-4 border-danger">
+
+        <div class="d-flex flex-column mb-3">
+
+          <div class="d-flex justify-content-center">
+            <mat-icon class="selected">search</mat-icon>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- ITEM MENU -->
+      <div class="col-2" (click)="irFavoritos()">
+
+        <div class="d-flex flex-column">
+
+          <div class="d-flex justify-content-center">
+            <mat-icon class="notSelected">stars</mat-icon>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- ITEM MENU -->
+      <div class="col-2" (click)="irMas()">
+
+        <div class="d-flex flex-column">
+
+          <div class="d-flex justify-content-center">
+            <mat-icon class="notSelected">menu</mat-icon>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- COLSPAN -->
+      <div class="col-1"></div>
+
+    </div>
+
+  </div>
+
+  <!-- CONTENEDOR SECUNDARIO -->
+  <div class="col px-3">
+
+    <div class="row mt-4">
+
+      <form class="d-flex" [formGroup]="formBuscar" novalidate>
+        <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search"
+          formControlName="buscar">
+        <button class="btn btn-outline-primary d-flex" type="submit" (click)="buscarPorNombre()">
+          <mat-icon>
+            search
+          </mat-icon>
+        </button>
+      </form>
+
+      <!-- LABEL INFORMATIVO -->
+      <div *ngIf="existeBusqueda" class="mt-2 mb-4">
+        <span *ngIf="lstRestaurantes.length > 0">Mostando resultados para <b>"{{ textoBuscado }}"</b></span>
+
+        <span *ngIf="lstRestaurantes.length === 0" class="text-danger">No se han encontrado resultados para <b>"{{
+            textoBuscado }}"</b></span>
+      </div>
+
+    </div>
+
+    <!-- LISTADO DE RESTAURANTES-->
+    <div class="card mt-1" *ngFor="let item of lstRestaurantes">
+      <div class="card-body d-flex justify-content-between">
+
+        <div class="d-flex align-items-center">
+          <span class="fs-3">{{ item.nomResta }}</span>
+        </div>
+
+        <button mat-icon-button (click)="verRestaurante(item)">
+          <mat-icon class="arrow">chevron_right</mat-icon>
+        </button>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>

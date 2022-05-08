@@ -1,0 +1,13 @@
+.selected {
+  transform: scale(1.3);
+  color: #CF755A;
+}
+
+.notSelected {
+  transform: scale(1.3);
+  color: gray;
+}
+
+.arrow {
+  color: blue;
+}

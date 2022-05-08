@@ -1,0 +1,30 @@
+<!-- CABECERA DEL MODAL-->
+<div class="modal-header">
+  <p class="modal-title" id="modal-basic-title">Reseñas de los Clientes</p>
+  <button type="button" class="btn-close" aria-label="Close" (click)="cerrar()">
+  </button>
+</div>
+
+<!-- CUERPO DEL MODAL -->
+<div class="modal-body">
+
+  <div class="row">
+
+    <div class="col-md-6">
+      <label class="item">Listado de Reseñas de los Clientes</label>
+      <div class="form-row">
+        <div class="col">
+          <input type="text" class="form-control mb-3" id="codCategoria" readonly>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- FOOTER DEL MODAL -->
+<div class="modal-footer">
+  <button class="btn btn-primary px-4" style="background-color: #cf755a; border: #cf755a;"
+    (click)="abrirRegOpinion()">Registrar Opinión</button>
+</div>

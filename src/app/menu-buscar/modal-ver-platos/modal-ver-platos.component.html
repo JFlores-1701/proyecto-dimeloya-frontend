@@ -1,0 +1,30 @@
+<!-- CABECERA DEL MODAL-->
+<div class="modal-header" style="background-color: #cf755a;">
+  <h5 class="modal-title" id="modal-basic-title">Platos Disponibles</h5>
+  <button type="button" class="btn-close" aria-label="Close" (click)="cerrar()">
+  </button>
+</div>
+
+<!-- CUERPO DEL MODAL -->
+<div class="modal-body">
+
+  <div class="row">
+
+    <div class="col-md-6">
+      <label class="item">Listado de Platillos Disponibles</label>
+      <div class="form-row">
+        <div class="col">
+          <input type="text" class="form-control mb-3" id="codCategoria" readonly>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- FOOTER DEL MODAL -->
+<div class="modal-footer">
+  <button class="btn btn-primary px-4" style="background-color: #cf755a; border: #cf755a;"
+    (click)="aceptar()">Aceptar</button>
+</div>

@@ -1,0 +1,82 @@
+<!-- CONTENEDOR PRINCIPAL-->
+<div class="container d-flex align-items-center" style="height: 100vh; background-color: #aec1ba">
+
+  <!-- CONTENEDOR SECUNDARIO -->
+  <div class="container p-0" style="height: 80vh; background-color: white;">
+
+    <!-- BOTON CERRAR/REGRESAR -->
+    <div class="d-flex justify-content-end col pt-3 pe-3">
+      <button class="btn btn-primary" style="background-color: #cf755a; border: #cf755a; border-radius: 50%;"
+        (click)="irInicio()">X</button>
+    </div>
+
+    <!-- TITULO -->
+    <div class="d-flex justify-content-center">
+      <h1>Ingreso</h1>
+    </div>
+
+    <!-- SUBTITULO -->
+    <div class="d-flex justify-content-center mt-2">
+      <p class="me-2">¿Eres nuevo?</p>
+      <p style="color: #cf755a;" (click)="irRegistro()">Regístrate aquí</p>
+    </div>
+
+    <!-- CONTENEDOR FORMULARIO -->
+    <div class="col">
+
+      <!-- FORMULARIO -->
+      <form class="mx-4" [formGroup]="formLogin" novalidate>
+
+        <!-- CORREO -->
+        <div class="form-floating mb-3">
+
+          <input type="email" class="form-control" id="floatingInput" placeholder="Email"
+            style="background-color: #ededed;" formControlName="correoElectronico"
+            [class.is-invalid]="fieldCorreoElectronico?.invalid && fieldCorreoElectronico?.touched" autocomplete="off">
+          <label for="floatingInput">Email</label>
+
+          <div class='invalid-feedback' *ngIf='fieldCorreoElectronico?.invalid'>
+            <ng-container *ngIf="fieldCorreoElectronico?.hasError('required')">
+              {{msg}}
+            </ng-container>
+          </div>
+
+        </div>
+
+        <!-- CONTRASEÑA -->
+        <div class="form-floating mb-3">
+
+          <input type="password" class="form-control" id="floatingPassword" placeholder="Contraseña"
+            style="background-color: #ededed;" formControlName="contraseña"
+            [class.is-invalid]="fieldContrasena?.invalid && fieldContrasena?.touched">
+          <label for="floatingPassword">Contraseña</label>
+
+          <div class='invalid-feedback' *ngIf='fieldContrasena?.invalid'>
+            <ng-container *ngIf="fieldContrasena?.hasError('required')">
+              {{msg}}
+            </ng-container>
+          </div>
+
+        </div>
+
+        <!-- CHECKBOX -->
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" style="border-color: #cf755a;">
+          <label class="form-check-label" for="flexCheckDefault">
+            Mantener la sesión abierta
+          </label>
+        </div>
+
+        <!-- BOTON INGRESO -->
+        <div class="my-3">
+          <button class="form-control btn btn-primary py-2" style="background-color: #cf755a; border: #cf755a;"
+            (click)="ingresar()">Iniciar Sesión</button>
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+</div>

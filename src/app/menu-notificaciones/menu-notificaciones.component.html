@@ -1,0 +1,109 @@
+<!-- CONTENEDOR PRINCIPAL -->
+<div class="container">
+  <!-- BARRA DE MENÚ -->
+  <div class="col pt-3 sticky-top" style="background-color: #C4C4C4;">
+
+    <!-- BARRA DE MENÚ -->
+    <div class="row px-2">
+
+      <div class="col-1"></div>
+
+      <!-- ITEM MENU -->
+      <div class="col-2" (click)="irHome()">
+
+        <div class="col d-flex flex-column mb-3">
+
+          <div class="d-flex justify-content-center">
+            <mat-icon class="notSelected">home</mat-icon>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- ITEM MENU -->
+      <div class="col-2 border-bottom border-4 border-danger">
+
+        <div class="col d-flex flex-column mb-3">
+
+          <div class="d-flex justify-content-center">
+            <mat-icon class="selected">notifications</mat-icon>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- ITEM MENU -->
+      <div class="col-2" (click)="irBuscar()">
+
+        <div class="d-flex flex-column">
+
+          <div class="d-flex justify-content-center">
+            <mat-icon class="notSelected">search</mat-icon>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- ITEM MENU -->
+      <div class="col-2" (click)="irFavoritos()">
+
+        <div class="d-flex flex-column mb-3">
+
+          <div class="d-flex justify-content-center">
+            <mat-icon class="notSelected">stars</mat-icon>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- ITEM MENU -->
+      <div class="col-2" (click)="irMas()">
+
+        <div class="d-flex flex-column mb-3">
+
+          <div class="d-flex justify-content-center">
+            <mat-icon class="notSelected">menu</mat-icon>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- COLSPAN -->
+      <div class="col-1"></div>
+
+    </div>
+
+  </div>
+
+  <!-- CONTENEDOR SECUNDARIO -->
+  <div class="col">
+
+    <h2 class="ms-2 mt-3 fw-bold">Notificaciones</h2>
+
+    <!-- CADA NOTIFICACION -->
+    <div class="card mt-4 mx-2">
+      <div class="card-body">
+
+        <div class="col d-flex">
+          <div class="col-3">
+            <img src="assets/img/logo.jfif" width="70px">
+          </div>
+
+          <div class="col-9 pt-3">
+            <label class="text-muted mb-1">Hace 40 min</label>
+            <p class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad alias eum nihil reprehenderit
+              saepe totam voluptatum. Nesciunt, quaerat.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+
+  </div>
+</div>
