@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalConfirmacionComponent } from '../components/utils/modal-confirmacion/modal-confirmacion.component';
 import { RutasConstantes } from '../libs/rutas-constantes';
+import {ModalVerPuntosComponent} from "./modal-ver-puntos/modal-ver-puntos.component";
 
 @Component({
   selector: 'app-menu-mas',
@@ -30,6 +31,15 @@ export class MenuMasComponent implements OnInit {
           this.router.navigate([RutasConstantes.INICIO_SISTEMA]);
       }
     );
+  }
+
+  public verPuntos() {
+    const modal = this.modalService.open(ModalVerPuntosComponent, {
+      backdrop: "static",
+        keyboard: false,
+        size: 'lg',
+        fullscreen: true
+    });
   }
 
   // BOTONES NAVEGACION

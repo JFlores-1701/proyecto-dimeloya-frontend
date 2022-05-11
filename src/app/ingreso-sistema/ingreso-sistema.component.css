@@ -1,3 +1,8 @@
 input[type=checkbox]:checked {
   background-color: #cf755a;
 }
+
+.botones {
+  background-color: #CF755A;
+  border-radius: 50%
+}

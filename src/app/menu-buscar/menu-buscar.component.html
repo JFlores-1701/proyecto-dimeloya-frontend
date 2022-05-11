@@ -87,14 +87,39 @@
 
     <div class="row mt-4">
 
-      <form class="d-flex" [formGroup]="formBuscar" novalidate>
-        <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search"
-          formControlName="buscar">
-        <button class="btn btn-outline-primary d-flex" type="submit" (click)="buscarPorNombre()">
-          <mat-icon>
-            search
-          </mat-icon>
-        </button>
+      <form [formGroup]="formBuscar" novalidate>
+        <div class="d-flex">
+          <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search"
+                 formControlName="buscar">
+          <button class="btn btn-outline-primary d-flex me-2" type="submit" (click)="buscarPorNombre()">
+            <mat-icon>
+              search
+            </mat-icon>
+          </button>
+          <button class="btn btn-outline-danger d-flex" type="submit" (click)="limpiar()">
+            <mat-icon>
+              search_off
+            </mat-icon>
+          </button>
+        </div>
+
+        <div class="form-floating mt-2">
+          <select class="form-select" id="floatingSelect" aria-label="Floating label select example"
+                  formControlName="categoria">
+            <option hidden>Seleccione</option>
+            <option *ngFor="let item of lstCategoria">{{ item }}</option>
+          </select>
+          <label for="floatingSelect" class="text-muted">Categoría</label>
+        </div>
+
+        <div class="form-floating mt-2">
+          <select class="form-select" id="floatingSelectDistrito" aria-label="Floating label select example"
+                  formControlName="distrito">
+            <option hidden>Seleccione</option>
+            <option *ngFor="let item of lstDistrito"> {{ item }} </option>
+          </select>
+          <label for="floatingSelectDistrito" class="text-muted">Distrito</label>
+        </div>
       </form>
 
       <!-- LABEL INFORMATIVO -->
@@ -102,7 +127,7 @@
         <span *ngIf="lstRestaurantes.length > 0">Mostando resultados para <b>"{{ textoBuscado }}"</b></span>
 
         <span *ngIf="lstRestaurantes.length === 0" class="text-danger">No se han encontrado resultados para <b>"{{
-            textoBuscado }}"</b></span>
+          textoBuscado }}"</b></span>
       </div>
 
     </div>

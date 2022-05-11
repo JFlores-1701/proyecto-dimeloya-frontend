@@ -37,7 +37,6 @@ export class ModalRestauranteSeleccionadoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.mapa);
     console.log(this.codigo);
     this.mapaSanitizado = this.sanitizer.bypassSecurityTrustResourceUrl(this.mapa);
   }
@@ -56,15 +55,17 @@ export class ModalRestauranteSeleccionadoComponent implements OnInit {
 
   public verOpinionoes() {
     const modal = this.modalService.open(ModalVerReseniasComponent, {
-      // backdrop: "static",
+      backdrop: "static",
       keyboard: false,
-      size: 'lg'
+      size: 'lg',
+      scrollable: true
     });
+    modal.componentInstance.codResta = this.codigo;
   }
 
   public verPlatos() {
     const modal = this.modalService.open(ModalVerPlatosComponent, {
-      // backdrop: "static",
+      backdrop: "static",
       keyboard: false,
       size: 'lg'
     });

@@ -1,8 +1,10 @@
 import { ThisReceiver } from '@angular/compiler';
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ModalReseniaRegistradaComponent } from '../modal-resenia-registrada/modal-resenia-registrada.component';
+import {Opinion, OpinionRequest} from "../../models/opinion.interface";
+import {OpinionService} from "../../services/opinion.service";
 
 @Component({
   selector: 'app-modal-registrar-resenia',
@@ -10,6 +12,9 @@ import { ModalReseniaRegistradaComponent } from '../modal-resenia-registrada/mod
   styleUrls: ['./modal-registrar-resenia.component.css']
 })
 export class ModalRegistrarReseniaComponent implements OnInit {
+
+  @Input() codResta!: number;
+  @Output() respuesta = new EventEmitter<boolean>();
 
   public formResenia: FormGroup;
   public cantChars: number = 0;
@@ -19,12 +24,13 @@ export class ModalRegistrarReseniaComponent implements OnInit {
   starCount = 5;
   ratingArr: boolean[] = [];
 
-  constructor(private activeModal: NgbActiveModal, private modalService: NgbModal, private fb: FormBuilder) {
+  constructor(private activeModal: NgbActiveModal, private modalService: NgbModal, private fb: FormBuilder, private service: OpinionService) {
     this.formResenia = this.createForm();
     this.ratingArr = Array(this.starCount).fill(false);
   }
 
   ngOnInit(): void {
+    console.log(this.codResta);
   }
 
   private createForm() {
@@ -57,6 +63,18 @@ export class ModalRegistrarReseniaComponent implements OnInit {
 
     console.log(this.fieldComentarios?.value);
     console.log(this.rating);
+
+    const opinion: OpinionRequest = {
+      desOpi: this.fieldComentarios?.value,
+      puntOpi: this.rating,
+      codRestaOpi: this.codResta,
+      nomUsuarioOpi: 'Katherine Pimentel'
+    }
+
+    this.service.registrarOpinion(opinion).subscribe(data => {
+      this.respuesta.emit(true);
+      this.cerrar();
+    });
 
     // SI REGISTRO OK -> MUESTRO MODAL CONFIRMACION
     /*

@@ -1,0 +1,39 @@
+<!-- CABECERA DEL MODAL-->
+<div class="modal-header text-white">
+  <h4 class="modal-title" id="modal-basic-title">Puntos acumulados</h4>
+  <button type="button" class="btn-close" aria-label="Close" (click)="cerrar()">
+  </button>
+</div>
+
+<div class="modal-body">
+
+  <h2 class="mb-5">Comparte y gana puntos</h2>
+
+  <!-- CADA UNO DE LOS VIDEOS -->
+  <span class="ms-4">Link:</span>
+  <div class="input-group mb-3 px-4">
+    <input type="text" class="form-control" value="https://www.easyfood.com.pe/shared/ref?a=487975458"
+           aria-label="Recipient's username"
+           aria-describedby="basic-addon2" disabled>
+    <span class="input-group-text" id="basic-addon2" style="background-color: #CF755A">
+      <mat-icon style="color: white">
+        content_copy
+      </mat-icon>
+    </span>
+  </div>
+
+  <div class="col d-flex mt-5">
+    <div class="col-3 d-flex justify-content-center">
+      <button mat-icon-button>
+        <mat-icon>
+          person_add
+        </mat-icon>
+      </button>
+    </div>
+    <div class="col-9 pe-4">
+      <span class="text-center">Gana 20 Tokens por cada nuevo usuario que se registre con tu link de invitación</span>
+    </div>
+  </div>
+
+
+</div>

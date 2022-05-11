@@ -1,13 +1,15 @@
-import { HttpParams } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { DomSanitizer } from '@angular/platform-browser';
-import { Router } from '@angular/router';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { RutasConstantes } from '../libs/rutas-constantes';
-import { Restaurante } from '../models/restaurante.interface';
-import { RestauranteService } from '../services/restaurante.service';
-import { ModalRestauranteSeleccionadoComponent } from './modal-restaurante-seleccionado/modal-restaurante-seleccionado.component';
+import {HttpParams} from '@angular/common/http';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {DomSanitizer} from '@angular/platform-browser';
+import {Router} from '@angular/router';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {RutasConstantes} from '../libs/rutas-constantes';
+import {Restaurante} from '../models/restaurante.interface';
+import {RestauranteService} from '../services/restaurante.service';
+import {
+  ModalRestauranteSeleccionadoComponent
+} from './modal-restaurante-seleccionado/modal-restaurante-seleccionado.component';
 
 @Component({
   selector: 'app-menu-buscar',
@@ -23,7 +25,54 @@ export class MenuBuscarComponent implements OnInit {
   public existeBusqueda: any;
   public lstRestaurantes: Restaurante[] = [];
 
-  constructor(private modalService: NgbModal, private router: Router, private fb: FormBuilder, private service: RestauranteService, private sanitizer: DomSanitizer) {
+  public categoriaItem?: String;
+  public lstCategoria: String[] = ['Comida Criolla', 'Cevichería', 'Restobares'];
+  public lstDistrito: String[] = ['ANCÓN',
+    'ATE',
+    'BARRANCO',
+    'BREÑA',
+    'CARABAYLLO',
+    'CERCADO DE LIMA',
+    'CHACLACAYO',
+    'CHORRILLOS',
+    'CIENEGUILLA',
+    'COMAS',
+    'EL AGUSTINO',
+    'INDEPENDENCIA',
+    'JESÚS MARÍA',
+    'LA MOLINA',
+    'LA VICTORIA',
+    'LIMA',
+    'LINCE',
+    'LOS OLIVOS',
+    'LURIGANCHO-CHOSICA',
+    'LURÍN',
+    'MAGDALENA DEL MAR',
+    'MIRAFLORES',
+    'PACHACÁMAC',
+    'PUCUSANA',
+    'PUEBLO LIBRE',
+    'PUENTE PIEDRA',
+    'PUNTA HERMOSA',
+    'PUNTA NEGRA',
+    'RÍMAC',
+    'SAN BARTOLO',
+    'SAN BORJA',
+    'SAN ISIDRO',
+    'SAN JUAN DE LURIGANCHO',
+    'SAN JUAN DE MIRAFLORES',
+    'SAN LUIS',
+    'SAN MARTIN DE PORRES',
+    'SAN MIGUEL',
+    'SANTA ANITA',
+    'SANTA MARÍA DEL MAR',
+    'SANTA ROSA',
+    'SANTIAGO DE SURCO',
+    'SURQUILLO',
+    'VILLA EL SALVADOR',
+    'VILLA MARIA DEL TRIUNFO'];
+
+  constructor(private modalService: NgbModal, private router: Router, private fb: FormBuilder, private service: RestauranteService) {
     this.formBuscar = this.createForm();
   }
 
@@ -32,7 +81,9 @@ export class MenuBuscarComponent implements OnInit {
 
   public createForm() {
     return this.fb.group({
-      buscar: [null, [Validators.required]]
+      buscar: [null, [Validators.required]],
+      categoria: [null, null],
+      distrito: [null, null]
     })
   }
 
@@ -44,22 +95,76 @@ export class MenuBuscarComponent implements OnInit {
     return this.getForm.get('buscar');
   }
 
-   // BUSCAR
-  public buscarPorNombre() {
+  public get fieldCategoria() {
+    return this.getForm.get('categoria');
+  }
 
-    if(this.getForm.invalid) return;
+  public get fieldDistrito() {
+    return this.getForm.get('distrito');
+  }
+
+  // LIMPIAR
+  public limpiar() {
+    this.lstRestaurantes = [];
+    this.existeBusqueda = false;
+    this.formBuscar.reset();
+  }
+
+  // BUSCAR
+  public buscarPorNombre() {
+    // if (this.getForm.invalid) return;
+
+    console.log(this.fieldCategoria?.value)
+    console.log(this.fieldDistrito?.value)
 
     // FALTAN REALIZAR VALIDACIONES
     this.textoBuscado = this.fieldBuscar?.value;
-
     this.existeBusqueda = true;
 
-    // LISTAR
-    let params = new HttpParams().set('nombreRes', this.fieldBuscar?.value);
 
-    this.service.listarPorNombre(params).subscribe(data => {
-      this.lstRestaurantes = data;
-    })
+    /* PARA LAS CONSULTAS */
+    // SOLO NOMBRE
+    if (this.fieldBuscar?.value != null && this.fieldCategoria?.value === null && this.fieldDistrito?.value === null) {
+      this.service.listarPorNombre(this.fieldBuscar.value).subscribe(data => {
+        this.lstRestaurantes = data;
+      })
+    }
+    // SOLO CATEGORIA
+    if (this.fieldBuscar?.value === null && this.fieldCategoria?.value != null && this.fieldDistrito?.value === null) {
+      this.service.listarCategoria(this.fieldCategoria.value).subscribe(data => {
+        this.lstRestaurantes = data;
+      })
+    }
+    // SOLO DISTRITO
+    if (this.fieldBuscar?.value === null && this.fieldCategoria?.value === null && this.fieldDistrito?.value != null) {
+      this.service.listarDireccion(this.fieldDistrito.value).subscribe(data => {
+        this.lstRestaurantes = data;
+      })
+    }
+    // DOS -> NOMBRE Y DIRECCION
+    if (this.fieldBuscar?.value != null && this.fieldCategoria?.value === null && this.fieldDistrito?.value != null) {
+      this.service.listarNombreDireccion(this.fieldBuscar.value, this.fieldDistrito.value).subscribe(data => {
+        this.lstRestaurantes = data;
+      })
+    }
+    // DOS -> CATEGORIA Y DISTRITO
+    if (this.fieldBuscar?.value === null && this.fieldCategoria?.value != null && this.fieldDistrito?.value != null) {
+      this.service.listarCategoriaDireccion(this.fieldCategoria.value, this.fieldDistrito.value).subscribe(data => {
+        this.lstRestaurantes = data;
+      })
+    }
+    // DOS -> NOMBRE Y CATEGORIA
+    if (this.fieldBuscar?.value != null && this.fieldCategoria?.value != null && this.fieldDistrito?.value === null) {
+      this.service.listarNombreCategoria(this.fieldBuscar.value, this.fieldCategoria.value).subscribe(data => {
+        this.lstRestaurantes = data;
+      })
+    }
+    // TRES -> NOMBRE, CATEGORIA Y DIRECCION
+    if (this.fieldBuscar?.value != null && this.fieldCategoria?.value != null && this.fieldDistrito?.value != null) {
+      this.service.listarNombreCategoriaDireccion(this.fieldBuscar.value, this.fieldCategoria.value, this.fieldDistrito.value).subscribe(data => {
+        this.lstRestaurantes = data;
+      })
+    }
 
     console.log(this.lstRestaurantes);
   }
