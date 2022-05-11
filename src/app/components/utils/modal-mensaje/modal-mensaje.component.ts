@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -8,6 +8,9 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class ModalMensajeComponent implements OnInit {
 
+  @Input() msg!: string;
+  @Output() respuesta = new EventEmitter<boolean>();
+
   constructor(private activeModal: NgbActiveModal) { }
 
   ngOnInit(): void {
@@ -15,6 +18,7 @@ export class ModalMensajeComponent implements OnInit {
   }
 
   public cerrar() {
+    this.respuesta.emit(true);
     this.activeModal.close();
   }
 }

@@ -73,6 +73,7 @@ export class IngresoSistemaComponent implements OnInit {
           size: 'sm',
           centered: true
         });
+        modal.componentInstance.msg = 'Usuario y/o Contraseña incorrecta. Inténtalo nuevamente';
       }
     });
   }
