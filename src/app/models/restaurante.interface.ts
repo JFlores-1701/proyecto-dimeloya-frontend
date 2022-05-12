@@ -1,6 +1,7 @@
 export interface Restaurante {
   codResta:       number;
   nomResta:       string;
+  subResta:       string;
   puntosResta:    number;
   fonoResta:      string;
   faceResta:      string;
