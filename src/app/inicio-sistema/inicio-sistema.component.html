@@ -1,6 +1,44 @@
+<!--
 <p>inicio-sistema works!</p>
 
 <div class="d-flex justify-content-center">
   <button class="btn btn-primary me-3" (click)="irIngreso()">Ingreso</button>
   <button class="btn btn-primary" (click)="irRegistro()">Registro</button>
+</div>
+-->
+<!-- CONTENEDOR PRINCIPAL-->
+<div class="container">
+
+  <div class="d-flex justify-content-center" style="padding-top: 15%">
+    <img src="assets/img/logoapp.png" alt="">
+  </div>
+
+  <div class="d-flex justify-content-center">
+    <span class="fw-bold mt-2" style="color: white; font-size: 40px">DimeloYa!</span>
+  </div>
+
+  <div class="d-flex justify-content-center mt-5" style="padding-top: 30%">
+    <span style="color: white">Te ayudamos a disfrutar de platillos y</span>
+  </div>
+
+  <div class="d-flex justify-content-center mb-5" style="padding-bottom: 10%">
+    <span style="color: white">ambientes agradables</span>
+  </div>
+
+  <!--
+  <div class="d-flex justify-content-center mt-5">
+    <button class="btn btn-primary me-3" (click)="irIngreso()">Ingreso</button>
+    <button class="btn btn-primary" (click)="irRegistro()">Registro</button>
+  </div>
+  -->
+
+  <div class="d-grid gap-2 mx-5 mt-5">
+    <button class="btn btn-primary py-2" type="button" (click)="irIngreso()"
+            style="background-color: white; color: black; border-color: white">Ingreso
+    </button>
+    <button class="btn btn-primary py-2 mt-2" type="button" (click)="irRegistro()"
+            style="background-color: #CF755A; color: white; border-color: #CF755A">Registro
+    </button>
+  </div>
+
 </div>
