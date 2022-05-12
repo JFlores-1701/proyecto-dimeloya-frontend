@@ -23,13 +23,15 @@ import { ModalRegistrarReseniaComponent } from './menu-buscar/modal-registrar-re
 import { MenuNotificacionesComponent } from './menu-notificaciones/menu-notificaciones.component';
 import { MenuFavoritosComponent } from './menu-favoritos/menu-favoritos.component';
 import { UsuarioService } from './services/usuario.service';
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { ModalMensajeComponent } from './components/utils/modal-mensaje/modal-mensaje.component';
 import { RestauranteService } from './services/restaurante.service';
 import { ModalVerPuntosComponent } from './menu-mas/modal-ver-puntos/modal-ver-puntos.component';
 import { ModalVideosDisponiblesComponent } from './menu-mas/modal-videos-disponibles/modal-videos-disponibles.component';
 import { ModalCanjearPuntosComponent } from './menu-mas/modal-canjear-puntos/modal-canjear-puntos.component';
 import { ModalCompartirEnlaceComponent } from './menu-mas/modal-compartir-enlace/modal-compartir-enlace.component';
+import {NgxSpinnerModule} from "ngx-spinner";
+import {InterceptorService} from "./services/interceptor.service";
 
 
 @NgModule({
@@ -64,9 +66,11 @@ import { ModalCompartirEnlaceComponent } from './menu-mas/modal-compartir-enlace
     BrowserAnimationsModule,
     MatButtonModule,
     MatIconModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxSpinnerModule,
+    BrowserAnimationsModule
   ],
-  providers: [UsuarioService, RestauranteService],
+  providers: [UsuarioService, RestauranteService, { provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi:true}],
   bootstrap: [AppComponent],
   schemas:[
     CUSTOM_ELEMENTS_SCHEMA
