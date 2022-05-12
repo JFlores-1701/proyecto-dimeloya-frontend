@@ -9,9 +9,16 @@ import { RutasConstantes } from '../libs/rutas-constantes';
 })
 export class MenuInicioComponent implements OnInit {
 
+  public json: any;
+
   constructor(private router: Router) { }
 
   ngOnInit(): void {
+    // @ts-ignore
+    this.json = JSON.parse(localStorage.getItem("usuario"));
+    if (this.json.codUsuario == null) {
+      this.router.navigate([RutasConstantes.INICIO_SISTEMA]);
+    }
   }
 
   // BOTONES NAVEGACION

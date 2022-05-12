@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ModalConfirmacionComponent } from '../components/utils/modal-confirmacion/modal-confirmacion.component';
-import { RutasConstantes } from '../libs/rutas-constantes';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {ModalConfirmacionComponent} from '../components/utils/modal-confirmacion/modal-confirmacion.component';
+import {RutasConstantes} from '../libs/rutas-constantes';
 import {ModalVerPuntosComponent} from "./modal-ver-puntos/modal-ver-puntos.component";
 
 @Component({
@@ -12,9 +12,21 @@ import {ModalVerPuntosComponent} from "./modal-ver-puntos/modal-ver-puntos.compo
 })
 export class MenuMasComponent implements OnInit {
 
-  constructor(private modalService: NgbModal, private router: Router) { }
+  public json: any;
+  public nombre: any;
+  public correo: any;
+
+  constructor(private modalService: NgbModal, private router: Router) {
+  }
 
   ngOnInit(): void {
+    // @ts-ignore
+    this.json = JSON.parse(localStorage.getItem("usuario"));
+    if (this.json.codUsuario == null) {
+      this.router.navigate([RutasConstantes.INICIO_SISTEMA]);
+    }
+    this.nombre = this.json.nomUsuario + ' ' + this.json.apeUsuario;
+    this.correo = this.json.emailUsuario;
   }
 
   public cerrarSesion() {
@@ -27,8 +39,11 @@ export class MenuMasComponent implements OnInit {
     modal.componentInstance.respuesta.subscribe(
       (result: any) => {
         console.log(result);
-        if (result === true)
+        if (result === true) {
+          var jsonUsuario = {};
+          localStorage.setItem("usuario", JSON.stringify(jsonUsuario));
           this.router.navigate([RutasConstantes.INICIO_SISTEMA]);
+        }
       }
     );
   }
@@ -36,9 +51,9 @@ export class MenuMasComponent implements OnInit {
   public verPuntos() {
     const modal = this.modalService.open(ModalVerPuntosComponent, {
       backdrop: "static",
-        keyboard: false,
-        size: 'lg',
-        fullscreen: true
+      keyboard: false,
+      size: 'lg',
+      fullscreen: true
     });
   }
 

@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ModalMensajeComponent } from '../components/utils/modal-mensaje/modal-mensaje.component';
-import { RutasConstantes } from '../libs/rutas-constantes';
-import { ClienteResponse, LoginCliente } from '../models/usuario.interface';
-import { UsuarioService } from '../services/usuario.service';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {ModalMensajeComponent} from '../components/utils/modal-mensaje/modal-mensaje.component';
+import {RutasConstantes} from '../libs/rutas-constantes';
+import {ClienteResponse, LoginCliente} from '../models/usuario.interface';
+import {UsuarioService} from '../services/usuario.service';
 
 @Component({
   selector: 'app-ingreso-sistema',
@@ -59,14 +59,18 @@ export class IngresoSistemaComponent implements OnInit {
 
     this.service.ingresarAlSistema(login).subscribe(data => {
       this.response = data;
-      console.log(this.response);
 
       if (this.response != null) {
-        // SI LOGIN OK -> DIRIGE A HOME
+        var jsonUsuario = {
+          "codUsuario": this.response.codUsuario,
+          "nomUsuario": this.response.nomUsuario,
+          "apeUsuario": this.response.apeUsuario,
+          "emailUsuario": this.response.emailUsuario,
+          "passUsuario": this.response.passUsuario
+        };
+        localStorage.setItem("usuario", JSON.stringify(jsonUsuario));
         this.irMenuPrincipal();
       } else {
-        // SI LOGIN NO OK -> MUESTRA MENSAJE ERROR
-        console.log('ERROR AL INICIAR LOGIN')
         const modal = this.modalService.open(ModalMensajeComponent, {
           backdrop: "static",
           keyboard: false,

@@ -19,6 +19,7 @@ import {
 export class MenuBuscarComponent implements OnInit {
 
   public msg = "Dato obligatorio";
+  public json: any;
 
   public formBuscar: FormGroup;
   public textoBuscado: any;
@@ -77,6 +78,11 @@ export class MenuBuscarComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    // @ts-ignore
+    this.json = JSON.parse(localStorage.getItem("usuario"));
+    if (this.json.codUsuario == null) {
+      this.router.navigate([RutasConstantes.INICIO_SISTEMA]);
+    }
   }
 
   public createForm() {
