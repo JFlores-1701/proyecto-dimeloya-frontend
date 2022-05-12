@@ -19,6 +19,6 @@ export class OpinionService {
   }
 
   registrarOpinion(opinion: OpinionRequest) {
-    return this.http.post(this.apiBase + 'opinion/registrar', opinion);
+    return this.http.post<Opinion>(this.apiBase + 'opinion/registrar', opinion);
   }
 }

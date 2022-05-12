@@ -1,10 +1,12 @@
-import { ThisReceiver } from '@angular/compiler';
+import {ThisReceiver} from '@angular/compiler';
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ModalReseniaRegistradaComponent } from '../modal-resenia-registrada/modal-resenia-registrada.component';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {NgbActiveModal, NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {ModalReseniaRegistradaComponent} from '../modal-resenia-registrada/modal-resenia-registrada.component';
 import {Opinion, OpinionRequest} from "../../models/opinion.interface";
 import {OpinionService} from "../../services/opinion.service";
+import {ClienteResponse} from "../../models/usuario.interface";
+import {ModalMensajeComponent} from "../../components/utils/modal-mensaje/modal-mensaje.component";
 
 @Component({
   selector: 'app-modal-registrar-resenia',
@@ -19,6 +21,8 @@ export class ModalRegistrarReseniaComponent implements OnInit {
   public formResenia: FormGroup;
   public cantChars: number = 0;
   public msg = "Dato obligatorio";
+
+  public response: Opinion | undefined;
 
   rating: number = 0;
   starCount = 5;
@@ -59,7 +63,7 @@ export class ModalRegistrarReseniaComponent implements OnInit {
   public registrarOpinion() {
 
     this.getForm.markAllAsTouched();
-    if(this.getForm.invalid) return;
+    if (this.getForm.invalid) return;
 
     console.log(this.fieldComentarios?.value);
     console.log(this.rating);
@@ -71,7 +75,24 @@ export class ModalRegistrarReseniaComponent implements OnInit {
       nomUsuarioOpi: 'Katherine Pimentel'
     }
 
+    /*
     this.service.registrarOpinion(opinion).subscribe(data => {
+      this.respuesta.emit(true);
+      this.cerrar();
+    });
+    */
+
+    this.service.registrarOpinion(opinion).subscribe(data => {
+      this.response = data;
+      if (this.response.codOpi != null) {
+        const modal = this.modalService.open(ModalReseniaRegistradaComponent, {
+          backdrop: "static",
+          keyboard: false,
+          size: 'sm',
+          centered: true
+        })
+      }
+
       this.respuesta.emit(true);
       this.cerrar();
     });

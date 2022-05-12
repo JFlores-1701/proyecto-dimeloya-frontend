@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -7,6 +7,8 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
   styleUrls: ['./modal-resenia-registrada.component.css']
 })
 export class ModalReseniaRegistradaComponent implements OnInit {
+
+  @Output() rptaResenia = new EventEmitter<boolean>();
 
   constructor(private activeModal: NgbActiveModal, private modalService: NgbModal) { }
 
@@ -18,6 +20,7 @@ export class ModalReseniaRegistradaComponent implements OnInit {
   }
 
   public aceptar() {
+    this.rptaResenia.emit(true);
     this.cerrar();
   }
 }
