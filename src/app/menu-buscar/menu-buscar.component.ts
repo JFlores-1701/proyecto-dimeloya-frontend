@@ -1,8 +1,8 @@
 import {HttpParams} from '@angular/common/http';
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {DomSanitizer} from '@angular/platform-browser';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {RutasConstantes} from '../libs/rutas-constantes';
 import {Restaurante} from '../models/restaurante.interface';
@@ -26,7 +26,6 @@ export class MenuBuscarComponent implements OnInit {
   public existeBusqueda: any;
   public lstRestaurantes: Restaurante[] = [];
 
-  public categoriaItem?: String;
   public lstCategoria: String[] = ['Comida Criolla', 'Cevichería', 'Restobares'];
   public lstDistrito: String[] = ['ANCÓN',
     'ATE',
@@ -73,7 +72,9 @@ export class MenuBuscarComponent implements OnInit {
     'VILLA EL SALVADOR',
     'VILLA MARIA DEL TRIUNFO'];
 
-  constructor(private modalService: NgbModal, private router: Router, private fb: FormBuilder, private service: RestauranteService) {
+  nomFav: string | null = '';
+
+  constructor(private modalService: NgbModal, private router: Router, private route: ActivatedRoute, private fb: FormBuilder, private service: RestauranteService) {
     this.formBuscar = this.createForm();
   }
 
@@ -82,7 +83,28 @@ export class MenuBuscarComponent implements OnInit {
     this.json = JSON.parse(localStorage.getItem("usuario"));
     if (this.json.codUsuario == null) {
       this.router.navigate([RutasConstantes.INICIO_SISTEMA]);
+    } else {
+      this.nomFav = this.route.snapshot.paramMap.get('nombre');
+      // @ts-ignore
+      if (this.nomFav?.length > 1) {
+        this.formBuscar.setValue({
+          buscar: this.nomFav,
+          categoria: null,
+          distrito: null
+        });
+        this.existeBusqueda = true;
+        this.service.listarPorNombre(this.fieldBuscar?.value).subscribe(data => {
+          this.lstRestaurantes = data;
+        })
+      } else {
+        this.existeBusqueda = false;
+      }
     }
+  }
+
+  ngAfterViewInit() {
+    this.nomFav = null;
+    this.lstRestaurantes = [];
   }
 
   public createForm() {

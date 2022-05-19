@@ -16,6 +16,7 @@ const routes: Routes = [
 
   { path: 'menu-inicio', component: MenuInicioComponent },
   { path: 'menu-buscar', component: MenuBuscarComponent },
+  { path: 'menu-buscar/:nombre', component: MenuBuscarComponent },
   { path: 'menu-notificaciones', component: MenuNotificacionesComponent },
   { path: 'menu-mas', component: MenuMasComponent },
   { path: 'menu-favoritos', component: MenuFavoritosComponent },
