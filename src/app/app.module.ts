@@ -32,6 +32,9 @@ import { ModalCanjearPuntosComponent } from './menu-mas/modal-canjear-puntos/mod
 import { ModalCompartirEnlaceComponent } from './menu-mas/modal-compartir-enlace/modal-compartir-enlace.component';
 import {NgxSpinnerModule} from "ngx-spinner";
 import {InterceptorService} from "./services/interceptor.service";
+import { ModalAgregarPuntosComponent } from './menu-mas/modal-agregar-puntos/modal-agregar-puntos.component';
+import { ModalPagoPuntosComponent } from './menu-mas/modal-pago-puntos/modal-pago-puntos.component';
+import { ModalPagoExitosoComponent } from './menu-mas/modal-pago-exitoso/modal-pago-exitoso.component';
 
 
 @NgModule({
@@ -55,7 +58,10 @@ import {InterceptorService} from "./services/interceptor.service";
     ModalVerPuntosComponent,
     ModalVideosDisponiblesComponent,
     ModalCanjearPuntosComponent,
-    ModalCompartirEnlaceComponent
+    ModalCompartirEnlaceComponent,
+    ModalAgregarPuntosComponent,
+    ModalPagoPuntosComponent,
+    ModalPagoExitosoComponent
   ],
   imports: [
     BrowserModule,

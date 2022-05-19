@@ -1,0 +1,28 @@
+<!-- CABECERA DEL MODAL-->
+<div class="modal-header text-white" style="background-color: #CF755A">
+  <span class="modal-title fs-7" id="modal-basic-title">Aviso</span>
+  <button type="button" class="btn-close" aria-label="Close" (click)="cerrar()">
+  </button>
+</div>
+
+<div class="modal-body pb-4">
+
+  <div class="d-flex justify-content-center">
+   <span class="text-center">El pago se ha realizado correctamente</span>
+  </div>
+
+  <div class="wrapper">
+    <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+      <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
+      <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+    </svg>
+  </div>
+
+  <div class="col d-flex justify-content-center mb-2">
+    <button class="btn btn-primary px-4" style="background-color: #CF755A; border-color: #CF755A" (click)="cerrar()">
+      Aceptar
+    </button>
+  </div>
+</div>
+
+

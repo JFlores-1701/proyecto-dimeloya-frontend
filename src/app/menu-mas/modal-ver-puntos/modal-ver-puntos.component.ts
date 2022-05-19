@@ -6,6 +6,7 @@ import {
 import {ModalVideosDisponiblesComponent} from "../modal-videos-disponibles/modal-videos-disponibles.component";
 import {ModalCompartirEnlaceComponent} from "../modal-compartir-enlace/modal-compartir-enlace.component";
 import {ModalCanjearPuntosComponent} from "../modal-canjear-puntos/modal-canjear-puntos.component";
+import {ModalAgregarPuntosComponent} from "../modal-agregar-puntos/modal-agregar-puntos.component";
 
 @Component({
   selector: 'app-modal-ver-puntos',
@@ -22,6 +23,15 @@ export class ModalVerPuntosComponent implements OnInit {
 
   public cerrar() {
     this.activeModal.close();
+  }
+
+  public agregarPuntos() {
+    const modal = this.modalService.open(ModalAgregarPuntosComponent, {
+      backdrop: "static",
+      keyboard: false,
+      scrollable: true,
+      centered: true
+    });
   }
 
   public videosDisponibles() {

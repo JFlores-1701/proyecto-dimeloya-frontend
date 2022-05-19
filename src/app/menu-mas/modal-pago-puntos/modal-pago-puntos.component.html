@@ -1,0 +1,53 @@
+<!-- CABECERA DEL MODAL-->
+<div class="modal-header text-white">
+  <h4 class="modal-title" id="modal-basic-title">Puntos acumulados</h4>
+  <button type="button" class="btn-close" aria-label="Close" (click)="cerrar()">
+  </button>
+</div>
+
+<div class="modal-body pb-4">
+
+  <h2>Pago</h2>
+  <div class="col px-3">
+
+    <div class="d-flex justify-content-center mb-4">
+      <span class="fs-1">S/ 10.00</span>
+    </div>
+
+    <div class="d-flex flex-column">
+      <form novalidate>
+        <div class="form-floating col-12 mb-2">
+          <input type="number" class="form-control" id="floatingInput" placeholder="name@example.com"
+                 autocomplete="off">
+          <label for="floatingInput" class="text-muted">Número Tarjeta</label>
+        </div>
+
+        <div class="form-floating col-12 mb-2">
+          <input type="text" class="form-control" id="floatingInput2" placeholder="name@example.com">
+          <label for="floatingInput2" class="text-muted">Titular</label>
+        </div>
+
+        <div class="d-flex col-12">
+          <div class="form-floating col-8 pe-2">
+            <input type="month" class="form-control" id="floatingInput3" placeholder="name@example.com">
+            <label for="floatingInput3" class="text-muted">Fec. Venc.</label>
+          </div>
+
+          <div class="form-floating col-4">
+            <input type="number" class="form-control" id="floatingInput4" placeholder="name@example.com">
+            <label for="floatingInput4" class="text-muted">CVV</label>
+          </div>
+        </div>
+      </form>
+
+    </div>
+
+    <div class="col d-flex justify-content-center mt-4 mb-4">
+      <button class="btn btn-primary px-4" style="background-color: #CF755A; border-color: #CF755A" (click)="pagar()">
+        Pagar
+      </button>
+    </div>
+
+  </div>
+</div>
+
