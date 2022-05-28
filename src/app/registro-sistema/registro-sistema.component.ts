@@ -6,6 +6,7 @@ import {Cliente, ClienteResponse} from '../models/usuario.interface';
 import {UsuarioService} from "../services/usuario.service";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {ModalMensajeComponent} from "../components/utils/modal-mensaje/modal-mensaje.component";
+import {ElegirSuscripcionComponent} from "./elegir-suscripcion/elegir-suscripcion.component";
 
 @Component({
   selector: 'app-registro-sistema',
@@ -64,7 +65,7 @@ export class RegistroSistemaComponent implements OnInit {
 
     this.getForm.markAllAsTouched();
     if (this.getForm.invalid) return;
-
+    /*
     const cliente: Cliente = {
       nomUsuario: this.fieldNombreCliente?.value,
       apeUsuario: this.fieldApellidoCliente?.value,
@@ -72,7 +73,47 @@ export class RegistroSistemaComponent implements OnInit {
       passUsuario: this.fieldContrasena?.value
     }
     console.log(cliente);
+    */
 
+    const modal = this.modalService.open(ElegirSuscripcionComponent, {
+      backdrop: "static",
+      keyboard: false,
+      size: 'sm',
+      centered: true
+    });
+    modal.componentInstance.respuesta.subscribe(
+      (result: any) => {
+        const cliente: Cliente = {
+          nomUsuario: this.fieldNombreCliente?.value,
+          apeUsuario: this.fieldApellidoCliente?.value,
+          emailUsuario: this.fieldCorreoElectronico?.value,
+          passUsuario: this.fieldContrasena?.value,
+          codSuscri: result
+        }
+        console.log(cliente);
+        this.service.registrarUsuario(cliente).subscribe(data => {
+            this.response = data;
+            if (this.response.codUsuario != null) {
+              const modal = this.modalService.open(ModalMensajeComponent, {
+                backdrop: "static",
+                keyboard: false,
+                size: 'sm',
+                centered: true
+              })
+              modal.componentInstance.msg = 'Usuario registrado correctamente';
+              modal.componentInstance.respuesta.subscribe(
+                (result: any) => {
+                  console.log(result);
+                  if (result === true)
+                    this.router.navigate([RutasConstantes.INICIO_SISTEMA]);
+                }
+              );
+            }
+          }
+        );
+      }
+    );
+/*
     this.service.registrarUsuario(cliente).subscribe(data => {
         this.response = data;
         if (this.response.codUsuario != null) {
@@ -93,9 +134,7 @@ export class RegistroSistemaComponent implements OnInit {
         }
       }
     );
-    // METODO REGISTRAR NUEVO USUARIO
-    // OK -> NOTIFICACION CORRECTA
-    // NO OK -> NOTIFICACION INCORRECTA
+    */
   }
 
   // NAVEGACION

@@ -1,0 +1,94 @@
+<!-- CABECERA DEL MODAL-->
+<div class="modal-header text-white">
+  <h4 class="modal-title" id="modal-basic-title">Puntos acumulados</h4>
+  <button type="button" class="btn-close" aria-label="Close" (click)="cerrar()">
+  </button>
+</div>
+
+<div class="modal-body">
+
+  <h2>Elija una suscripción</h2>
+
+  <form [formGroup]="formSuscripcion" novalidate>
+    <div class="card mx-2 mb-2">
+      <div class="card-body d-inline-flex">
+
+        <div class="col-12 d-flex align-items-center">
+
+          <div class="col-9">
+            <div class="d-flex flex-column">
+              <span class="fs-2">Free</span>
+              <span class="fs-7 text-muted mt-1">Acceso Limitado</span>
+            </div>
+          </div>
+
+          <div class="col-3">
+            <div class="d-flex justify-content-end">
+              <input class="form-check-input" type="checkbox" (change)="validarSeleccion()"
+                     formControlName="gratis">
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+
+    <div class="card mx-2 mb-2">
+      <div class="card-body d-inline-flex">
+
+        <div class="col-12 d-flex align-items-center">
+
+          <div class="col-9">
+            <div class="d-flex flex-column">
+              <span class="fs-2">Premium 1 Mes</span>
+              <span class="fs-7 text-muted mt-1">Acceso Ilimitado  S/ 9.90</span>
+            </div>
+          </div>
+
+          <div class="col-3">
+            <div class="d-flex justify-content-end">
+              <input class="form-check-input" type="checkbox" (change)="validarSeleccion()"
+                     formControlName="unmes">
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="card mx-2 mb-2">
+      <div class="card-body d-inline-flex">
+
+        <div class="col-12 d-flex align-items-center">
+
+          <div class="col-9">
+            <div class="d-flex flex-column">
+              <span class="fs-2">Premium 3 Meses</span>
+              <span class="fs-7 text-muted mt-1">Acceso Ilimitado  S/ 28.90</span>
+            </div>
+          </div>
+
+          <div class="col-3">
+            <div class="d-flex justify-content-end">
+              <input class="form-check-input" type="checkbox" (change)="validarSeleccion()"
+                     formControlName="tresmeses">
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="mt-3 d-flex justify-content-center mb-3">
+      <button type="button" class="btn btn-primary px-4" style="background-color: #CF755A; border-color: #CF755A"
+              (click)="continuar()">
+        Continuar
+      </button>
+      <button type="button" class="btn btn-secondary ms-2 px-4" (click)="cerrar()">Cancelar</button>
+    </div>
+
+  </form>
+
+</div>
+

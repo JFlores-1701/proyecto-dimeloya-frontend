@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {NgbActiveModal, NgbModal} from "@ng-bootstrap/ng-bootstrap";
 import {ModalPagoExitosoComponent} from "../modal-pago-exitoso/modal-pago-exitoso.component";
 import {RutasConstantes} from "../../libs/rutas-constantes";
@@ -10,6 +10,7 @@ import {RutasConstantes} from "../../libs/rutas-constantes";
 })
 export class ModalPagoPuntosComponent implements OnInit {
 
+  @Input() importe: string = '';
   @Output() respuesta = new EventEmitter<boolean>();
 
   constructor(private activeModal: NgbActiveModal, private modalService: NgbModal) { }

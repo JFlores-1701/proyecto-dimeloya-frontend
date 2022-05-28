@@ -3,6 +3,7 @@ export interface Cliente {
   apeUsuario: string;
   emailUsuario: string;
   passUsuario: string;
+  codSuscri: string;
 }
 
 export interface ClienteResponse {
@@ -11,6 +12,8 @@ export interface ClienteResponse {
   apeUsuario: string;
   emailUsuario: string;
   passUsuario: string;
+  codSuscri: string;
+  desSuscri: string;
 }
 
 export interface LoginCliente {

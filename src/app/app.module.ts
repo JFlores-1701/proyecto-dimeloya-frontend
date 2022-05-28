@@ -35,6 +35,7 @@ import {InterceptorService} from "./services/interceptor.service";
 import { ModalAgregarPuntosComponent } from './menu-mas/modal-agregar-puntos/modal-agregar-puntos.component';
 import { ModalPagoPuntosComponent } from './menu-mas/modal-pago-puntos/modal-pago-puntos.component';
 import { ModalPagoExitosoComponent } from './menu-mas/modal-pago-exitoso/modal-pago-exitoso.component';
+import { ElegirSuscripcionComponent } from './registro-sistema/elegir-suscripcion/elegir-suscripcion.component';
 
 
 @NgModule({
@@ -61,7 +62,8 @@ import { ModalPagoExitosoComponent } from './menu-mas/modal-pago-exitoso/modal-p
     ModalCompartirEnlaceComponent,
     ModalAgregarPuntosComponent,
     ModalPagoPuntosComponent,
-    ModalPagoExitosoComponent
+    ModalPagoExitosoComponent,
+    ElegirSuscripcionComponent
   ],
   imports: [
     BrowserModule,
