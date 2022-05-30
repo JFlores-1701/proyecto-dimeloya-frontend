@@ -84,7 +84,7 @@
 
     <!-- AVATAR USUARIO -->
     <div class="d-flex justify-content-center col">
-      <img alt="" src="assets/img/user-mask.png" width="120px" />
+      <img alt="" src="assets/img/user-mask.png" width="120px"/>
     </div>
 
     <!-- NOMBRE USUARIO -->
@@ -100,7 +100,8 @@
 
     <!---------------------------------------------------------------------------------------------------------------->
     <!-- EJEMPLO DE DIV-->
-    <div class="row mx-3 py-2 mb-2 mt-4" style="width: 90%; box-shadow: 9px 5px 17px -6px rgba(0,0,0,0.67); min-height: 6vh;">
+    <div class="row mx-3 py-2 mb-2 mt-4"
+         style="width: 90%; box-shadow: 9px 5px 17px -6px rgba(0,0,0,0.67); min-height: 6vh;">
 
       <div class="col d-flex align-items-center">
         <label>Lenguaje</label>
@@ -123,7 +124,8 @@
     </div>
 
     <!-- EJEMPLO DE DIV-->
-    <div class="row mx-3 py-2 mb-2 mt-1" style="width: 90%; box-shadow: 9px 5px 17px -6px rgba(0,0,0,0.67); min-height: 6vh;">
+    <div class="row mx-3 py-2 mb-2 mt-1"
+         style="width: 90%; box-shadow: 9px 5px 17px -6px rgba(0,0,0,0.67); min-height: 6vh;">
 
       <div class="col d-flex align-items-center">
         <label>Mostrar Notificaciones</label>
@@ -138,7 +140,9 @@
     </div>
 
     <!-- EJEMPLO DE DIV-->
-    <div class="row mx-3 py-2 mb-2 mt-2" style="width: 90%; box-shadow: 9px 5px 17px -6px rgba(0,0,0,0.67); min-height: 6vh;">
+    <div class="row mx-3 py-2 mb-2 mt-2"
+         style="width: 90%; box-shadow: 9px 5px 17px -6px rgba(0,0,0,0.67); min-height: 6vh;"
+         *ngIf="codSuscri === '2' || codSuscri === '3'">
 
       <div class="col d-flex align-items-center">
         <label>Puntos Acumulados</label>
@@ -153,7 +157,24 @@
     </div>
 
     <!-- EJEMPLO DE DIV-->
-    <div class="row mx-3 py-2 mt-2" style="width: 90%; box-shadow: 9px 5px 17px -6px rgba(0,0,0,0.67); min-height: 6vh;">
+    <div class="row mx-3 py-2 mt-2"
+         style="width: 90%; box-shadow: 9px 5px 17px -6px rgba(0,0,0,0.67); min-height: 6vh;">
+
+      <div class="col d-flex align-items-center">
+        <label>Sucripción</label>
+      </div>
+
+      <div class="col d-flex justify-content-end">
+        <div class="d-flex align-items-center">
+          <span class="text-muted">{{ desSuscri }}</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- EJEMPLO DE DIV-->
+    <div class="row mx-3 py-2 mt-2"
+         style="width: 90%; box-shadow: 9px 5px 17px -6px rgba(0,0,0,0.67); min-height: 6vh;">
 
       <div class="col d-flex align-items-center">
         <label>Cerrar Sesión</label>

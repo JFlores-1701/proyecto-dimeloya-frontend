@@ -28,6 +28,8 @@ export class ModalRestauranteSeleccionadoComponent implements OnInit {
   @Input() imgPrincipal: string | undefined;
   @Input() imgSecundaria: string | undefined;
 
+  @Input() codSuscri: string | undefined;
+
   // PARA EL MAPA
   lstRestaurantes : Restaurante [] = [];
   mapaSanitizado: any;

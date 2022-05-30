@@ -8,15 +8,13 @@ import {Cliente, ClienteResponse, LoginCliente} from '../models/usuario.interfac
 })
 export class UsuarioService {
 
-  private apiBase: string = environment.urlBase;
-
   constructor(private http: HttpClient) { }
 
   ingresarAlSistema(loginCliente: LoginCliente) {
-    return this.http.post<ClienteResponse>(this.apiBase + "usuario/login", loginCliente);
+    return this.http.post<ClienteResponse>("https://dimeloya.herokuapp.com/api/v1/usuario/login", loginCliente);
   }
 
   registrarUsuario(usuario: Cliente) {
-    return this.http.post<ClienteResponse>(this.apiBase + "usuario/registrar", usuario);
+    return this.http.post<ClienteResponse>("https://dimeloya.herokuapp.com/api/v1/usuario/registrar", usuario);
   }
 }

@@ -9,7 +9,7 @@ import {Opinion, OpinionRequest} from "../models/opinion.interface";
 })
 export class OpinionService {
 
-  private apiBase: string = environment.urlBase;
+  private apiBase: string = "https://dimeloya.herokuapp.com/api/v1/";
 
   constructor(private http: HttpClient) { }
 

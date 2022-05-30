@@ -10,12 +10,14 @@ import { RutasConstantes } from '../libs/rutas-constantes';
 export class MenuNotificacionesComponent implements OnInit {
 
   public json: any;
+  public codSuscri: string | undefined;
 
   constructor(private router: Router) { }
 
   ngOnInit(): void {
     // @ts-ignore
     this.json = JSON.parse(localStorage.getItem("usuario"));
+    this.codSuscri = this.json.codSuscri;
     if (this.json.codUsuario == null) {
       this.router.navigate([RutasConstantes.INICIO_SISTEMA]);
     }

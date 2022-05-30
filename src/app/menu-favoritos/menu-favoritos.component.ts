@@ -14,6 +14,7 @@ export class MenuFavoritosComponent implements OnInit {
     'Naruto', 'La Bistecca', 'Astrid y Gastón', 'Astrid y Gastón', 'Astrid y Gastón', 'Astrid y Gastón'];
 
   public json: any;
+  public codSuscri: string | undefined;
 
   constructor(private router: Router) {
   }
@@ -21,6 +22,7 @@ export class MenuFavoritosComponent implements OnInit {
   ngOnInit(): void {
     // @ts-ignore
     this.json = JSON.parse(localStorage.getItem("usuario"));
+    this.codSuscri = this.json.codSuscri;
     if (this.json.codUsuario == null) {
       this.router.navigate([RutasConstantes.INICIO_SISTEMA]);
     }

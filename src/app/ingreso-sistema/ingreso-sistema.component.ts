@@ -66,7 +66,8 @@ export class IngresoSistemaComponent implements OnInit {
           "nomUsuario": this.response.nomUsuario,
           "apeUsuario": this.response.apeUsuario,
           "emailUsuario": this.response.emailUsuario,
-          "passUsuario": this.response.passUsuario
+          "passUsuario": this.response.passUsuario,
+          "codSuscri": this.response.codSuscri
         };
         localStorage.setItem("usuario", JSON.stringify(jsonUsuario));
         this.irMenuPrincipal();

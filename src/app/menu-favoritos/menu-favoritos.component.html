@@ -87,31 +87,46 @@
 
     <h2 class="ms-2 mt-3 fw-bold">Favoritos</h2>
 
-    <!-- CADA FAVORITOS -->
-    <div class="card mt-4 mx-2" *ngFor="let item of lstFavoritos; index as i">
-      <div class="card-body d-flex justify-content-between">
+    <!-- EN CASO SEA FREE-->
+    <ng-container *ngIf="codSuscri === '1'" class="mx-5">
+      <div class="d-flex justify-content-center mt-5">
+        <img src="assets/img/premium.jpg" alt="" width="75%">
+      </div>
+      <div class="d-flex justify-content-center mx-5 mt-4 fs-6">
+        <span style="text-align: justify">Esta opción solo está habilitada para Premium.
+          <a class="fs-6" style="color: #CF755A; text-decoration: none"> Suscríbete ahora</a>
+        </span>
+      </div>
+    </ng-container>
 
-        <div class="d-flex align-items-center">
-          <div style="border-radius: 50%; background-color: #C4C4C4; width: 30px; height: 30px"
-               class="d-flex justify-content-center">
-            <div class="d-flex align-items-center">
-              <span class="text-white fw-bold"> {{ i + 1}}</span>
+    <!-- EN CASO SEA PREMIUM-->
+    <ng-container *ngIf="codSuscri === '2' || codSuscri === '3'">
+      <!-- CADA FAVORITOS -->
+      <div class="card mt-4 mx-2" *ngFor="let item of lstFavoritos; index as i">
+        <div class="card-body d-flex justify-content-between">
+
+          <div class="d-flex align-items-center">
+            <div style="border-radius: 50%; background-color: #C4C4C4; width: 30px; height: 30px"
+                 class="d-flex justify-content-center">
+              <div class="d-flex align-items-center">
+                <span class="text-white fw-bold"> {{ i + 1}}</span>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="d-flex align-items-center">
-          <span class="fs-3">{{ item }}</span>
-        </div>
+          <div class="d-flex align-items-center">
+            <span class="fs-3">{{ item }}</span>
+          </div>
 
-        <div>
-          <button mat-icon-button (click)="irRestaurante(item)">
-            <mat-icon class="arrow">chevron_right</mat-icon>
-          </button>
-        </div>
+          <div>
+            <button mat-icon-button (click)="irRestaurante(item)">
+              <mat-icon class="arrow">chevron_right</mat-icon>
+            </button>
+          </div>
 
+        </div>
       </div>
-    </div>
+    </ng-container>
 
   </div>
 </div>

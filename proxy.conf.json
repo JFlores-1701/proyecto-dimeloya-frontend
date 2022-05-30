@@ -1,6 +1,6 @@
 {
   "/api/*": {
-    "target": "http://localhost:7070",
+    "target": "https://dimeloya.herokuapp.com",
     "secure": false,
     "logLevel": "debug"
   }

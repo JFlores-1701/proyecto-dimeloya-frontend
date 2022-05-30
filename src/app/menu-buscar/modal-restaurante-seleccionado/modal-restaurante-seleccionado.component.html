@@ -37,12 +37,15 @@
 
     <!--BOTONES -->
     <div class="col-4 d-flex flex-column mb-2">
+      <ng-container>
+        <button class="btn btn-primary" style="background-color: #cf755a; border: #cf755a;"
+                (click)="verPlatos()">Platos</button>
+      </ng-container>
 
-      <button class="btn btn-primary" style="background-color: #cf755a; border: #cf755a;"
-        (click)="verPlatos()">Platos</button>
-      <button class="btn btn-primary mt-2" style="background-color: #cf755a; border: #cf755a;"
-        (click)="verOpinionoes()">Reseñas</button>
-
+      <ng-container *ngIf="codSuscri === '2' || codSuscri === '3'">
+        <button class="btn btn-primary mt-2" style="background-color: #cf755a; border: #cf755a;"
+                (click)="verOpinionoes()">Reseñas</button>
+      </ng-container>
     </div>
 
   </div>

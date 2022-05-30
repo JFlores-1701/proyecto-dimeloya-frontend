@@ -74,6 +74,8 @@ export class MenuBuscarComponent implements OnInit {
 
   nomFav: string | null = '';
 
+  codSuscri: string | undefined;
+
   constructor(private modalService: NgbModal, private router: Router, private route: ActivatedRoute, private fb: FormBuilder, private service: RestauranteService) {
     this.formBuscar = this.createForm();
   }
@@ -81,6 +83,7 @@ export class MenuBuscarComponent implements OnInit {
   ngOnInit(): void {
     // @ts-ignore
     this.json = JSON.parse(localStorage.getItem("usuario"));
+    this.codSuscri = this.json.codSuscri;
     if (this.json.codUsuario == null) {
       this.router.navigate([RutasConstantes.INICIO_SISTEMA]);
     } else {
@@ -213,6 +216,7 @@ export class MenuBuscarComponent implements OnInit {
     });
     let mapaURL = 'https://www.google.com/maps/embed?' + item.mapaResta;
     console.log('Este es la ruta del: ' + mapaURL);
+    console.log('codSuscri ' + this.codSuscri);
 
     modal.componentInstance.codigo = item.codResta;
     modal.componentInstance.mapa = mapaURL;
@@ -224,6 +228,8 @@ export class MenuBuscarComponent implements OnInit {
     modal.componentInstance.instagram = item.instaResta;
     modal.componentInstance.imgPrincipal = item.imgPrincResta;
     modal.componentInstance.imgSecundaria = item.imgSecondResta;
+
+    modal.componentInstance.codSuscri = this.codSuscri;
   }
 
   // BOTONES NAVEGACION

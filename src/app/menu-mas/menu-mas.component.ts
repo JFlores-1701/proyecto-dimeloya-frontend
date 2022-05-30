@@ -15,6 +15,8 @@ export class MenuMasComponent implements OnInit {
   public json: any;
   public nombre: any;
   public correo: any;
+  public codSuscri: string | undefined;
+  public desSuscri: string | undefined;
 
   constructor(private modalService: NgbModal, private router: Router) {
   }
@@ -27,6 +29,16 @@ export class MenuMasComponent implements OnInit {
     }
     this.nombre = this.json.nomUsuario + ' ' + this.json.apeUsuario;
     this.correo = this.json.emailUsuario;
+    this.codSuscri = this.json.codSuscri;
+    if (this.codSuscri === '1') {
+      this.desSuscri = 'Free';
+    }
+    if (this.codSuscri === '2') {
+      this.desSuscri = '1 Mes';
+    }
+    if (this.codSuscri === '3') {
+      this.desSuscri = '3 Meses';
+    }
   }
 
   public cerrarSesion() {

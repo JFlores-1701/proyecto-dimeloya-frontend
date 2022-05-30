@@ -85,24 +85,56 @@
 
     <h2 class="ms-2 mt-3 fw-bold">Notificaciones</h2>
 
-    <!-- CADA NOTIFICACION -->
-    <div class="card mt-4 mx-2">
-      <div class="card-body">
-
-        <div class="col d-flex">
-          <div class="col-3">
-            <img src="assets/img/logo.jfif" width="70px">
-          </div>
-
-          <div class="col-9 pt-3">
-            <label class="text-muted mb-1">Hace 40 min</label>
-            <p class="text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad alias eum nihil reprehenderit
-              saepe totam voluptatum. Nesciunt, quaerat.</p>
-          </div>
-        </div>
-
+    <!-- EN CASO SEA FREE-->
+    <ng-container *ngIf="codSuscri === '1'" class="mx-5">
+      <div class="d-flex justify-content-center mt-5">
+        <img src="assets/img/premium.jpg" alt="" width="75%">
       </div>
-    </div>
+      <div class="d-flex justify-content-center mx-5 mt-4 fs-6">
+        <span style="text-align: justify">Esta opción solo está habilitada para Premium.
+          <a class="fs-6" style="color: #CF755A; text-decoration: none"> Suscríbete ahora</a>
+        </span>
+      </div>
+    </ng-container>
+
+    <!-- EN CASO SEA PREMIUM-->
+    <ng-container *ngIf="codSuscri === '2' || codSuscri === '3'">
+      <!-- CADA NOTIFICACION -->
+      <div class="card mt-4 mx-2">
+        <div class="card-body">
+
+          <div class="col d-flex">
+            <div class="col-3">
+              <img src="assets/img/logopardos.png" width="80%" style="border-radius: 50%">
+            </div>
+
+            <div class="col-9 pt-3">
+              <label class="text-muted mb-1">Hace 40 min</label>
+              <p class="text">Disfruta de 1/4 de pollo a tan solo S/ 10 😀</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- CADA NOTIFICACION -->
+      <div class="card mt-2 mx-2">
+        <div class="card-body">
+
+          <div class="col d-flex">
+            <div class="col-3">
+              <img src="assets/img/pedidoslogo.png" width="80%" style="border-radius: 50%">
+            </div>
+
+            <div class="col-9 pt-3">
+              <label class="text-muted mb-1">Hace 50 min</label>
+              <p class="text">Invita a tus amigos a la app y gana hasta S/ 15 😀</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </ng-container>
 
 
   </div>
