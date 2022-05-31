@@ -132,28 +132,40 @@
 
     </div>
 
-    <!-- LISTADO DE RESTAURANTES-->
-    <div class="card mt-2 py-2" *ngFor="let item of lstRestaurantes">
-      <div class="card-body d-flex justify-content-between">
-
-        <!--
-        <div class="d-flex align-items-center">
-          <span class="fs-3">{{ item.nomResta }}</span>
-          <span class="text-muted">{{ item.subResta }}</span>
-        </div>
-        -->
-
-        <div class="d-flex flex-column">
-          <span class="fs-3">{{ item.nomResta }}</span>
-          <span class="text-muted mt-2">{{ item.subResta }}</span>
-        </div>
-
-        <button mat-icon-button (click)="verRestaurante(item)">
-          <mat-icon class="arrow">chevron_right</mat-icon>
-        </button>
-
+    <ng-container *ngIf="nomFav != null && lstRestaurantes.length === 0">
+      <div class="mt-4">
+        <img src="assets/img/loading.jpg" width="90%">
       </div>
-    </div>
+      <div class="d-flex justify-content-center mt-3 mb-5" (click)="buscarPorNombre()">
+        <span>Ups! ocurrió un error </span>
+        <span class="fw-bold ms-2" style="color: #CF755A"> Inténtalo nuevamente</span>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="lstRestaurantes.length > 0">
+      <!-- LISTADO DE RESTAURANTES-->
+      <div class="card mt-2 py-2" *ngFor="let item of lstRestaurantes">
+        <div class="card-body d-flex justify-content-between">
+
+          <!--
+          <div class="d-flex align-items-center">
+            <span class="fs-3">{{ item.nomResta }}</span>
+            <span class="text-muted">{{ item.subResta }}</span>
+          </div>
+          -->
+
+          <div class="d-flex flex-column">
+            <span class="fs-3">{{ item.nomResta }}</span>
+            <span class="text-muted mt-2">{{ item.subResta }}</span>
+          </div>
+
+          <button mat-icon-button (click)="verRestaurante(item)">
+            <mat-icon class="arrow">chevron_right</mat-icon>
+          </button>
+
+        </div>
+      </div>
+    </ng-container>
 
   </div>
   <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="large" color="FFFFFF" type="square-jelly-box">

@@ -1,5 +1,5 @@
 import {HttpParams} from '@angular/common/http';
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {DomSanitizer} from '@angular/platform-browser';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -72,7 +72,8 @@ export class MenuBuscarComponent implements OnInit {
     'VILLA EL SALVADOR',
     'VILLA MARIA DEL TRIUNFO'];
 
-  nomFav: string | null = '';
+  // @ts-ignore
+  nomFav: string;
 
   codSuscri: string | undefined;
 
@@ -87,7 +88,9 @@ export class MenuBuscarComponent implements OnInit {
     if (this.json.codUsuario == null) {
       this.router.navigate([RutasConstantes.INICIO_SISTEMA]);
     } else {
+      // @ts-ignore
       this.nomFav = this.route.snapshot.paramMap.get('nombre');
+      console.log(this.nomFav);
       // @ts-ignore
       if (this.nomFav?.length > 1) {
         this.formBuscar.setValue({
@@ -97,19 +100,23 @@ export class MenuBuscarComponent implements OnInit {
         });
         this.textoBuscado = this.fieldBuscar?.value;
         this.existeBusqueda = true;
-        this.service.listarPorNombre(this.fieldBuscar?.value).subscribe(data => {
+        this.service.listarPorNombre(this.nomFav).subscribe(data => {
           this.lstRestaurantes = data;
-        })
+        });
       } else {
         this.existeBusqueda = false;
       }
     }
   }
 
+/*
   ngAfterViewInit() {
+    // @ts-ignore
     this.nomFav = null;
     this.lstRestaurantes = [];
   }
+
+ */
 
   public createForm() {
     return this.fb.group({
@@ -257,16 +264,18 @@ export class MenuBuscarComponent implements OnInit {
   public buscar() {
     console.log(this.fieldBuscar?.value);
 
+    if (this.nomFav != null) {
+
+    }
+
     // FALTAN REALIZAR VALIDACIONES
     this.textoBuscado = this.fieldBuscar?.value;
     this.existeBusqueda = true;
-    console.log(this.existeBusqueda);
 
     // LISTAR
     this.service.listarRestaurantes().subscribe(data => {
       this.lstRestaurantes = data;
     })
-
     console.log(this.lstRestaurantes);
   }
 }
