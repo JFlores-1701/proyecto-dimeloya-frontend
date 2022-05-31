@@ -5,6 +5,8 @@ import { ModalVerPlatosComponent } from '../modal-ver-platos/modal-ver-platos.co
 import { ModalVerReseniasComponent } from '../modal-ver-resenias/modal-ver-resenias.component';
 import {RestauranteService} from "../../services/restaurante.service";
 import {Restaurante} from "../../models/restaurante.interface";
+import {Plato} from "../../models/plato.interface";
+import {PlatoService} from "../../services/plato.service";
 
 @Component({
   selector: 'app-modal-restaurante-seleccionado',
@@ -34,7 +36,9 @@ export class ModalRestauranteSeleccionadoComponent implements OnInit {
   lstRestaurantes : Restaurante [] = [];
   mapaSanitizado: any;
 
-  constructor(private activeModal: NgbActiveModal, private modalService: NgbModal, private sanitizer: DomSanitizer, private service: RestauranteService) {
+  lstPlatos: Plato[] = [];
+
+  constructor(private activeModal: NgbActiveModal, private modalService: NgbModal, private sanitizer: DomSanitizer, private service: RestauranteService, private servicePlato: PlatoService) {
     this.ratingArr = Array(this.starCount).fill(false);
   }
 
@@ -66,11 +70,23 @@ export class ModalRestauranteSeleccionadoComponent implements OnInit {
   }
 
   public verPlatos() {
+    this.listar();
     const modal = this.modalService.open(ModalVerPlatosComponent, {
       backdrop: "static",
       keyboard: false,
       size: 'lg'
     });
+    modal.componentInstance.nombre = this.nombre;
+    modal.componentInstance.lstPlatos = this.lstPlatos;
+  }
+
+  public listar(){
+    if (this.nombre != null) {
+      this.servicePlato.listarPorNombre(this.nombre).subscribe(data => {
+        this.lstPlatos = data;
+      })
+    }
+    console.log(this.lstPlatos);
   }
 
   returnStar(i: number) {

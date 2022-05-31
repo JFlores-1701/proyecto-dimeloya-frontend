@@ -12,7 +12,7 @@ export class RestauranteService {
   }
 
   listarRestaurantes() {
-    return this.http.get<Restaurante[]>("https://dimeloya.herokuapp.com/api/v1restaurante/listar");
+    return this.http.get<Restaurante[]>("https://dimeloya.herokuapp.com/api/v1/restaurante/listar");
   }
 
   // SOLO NOMBRE

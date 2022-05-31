@@ -158,49 +158,49 @@ export class MenuBuscarComponent implements OnInit {
     // SOLO NOMBRE
     if (this.fieldBuscar?.value != null && this.fieldCategoria?.value === null && this.fieldDistrito?.value === null) {
       this.textoBuscado = this.fieldBuscar?.value;
-      this.service.listarPorNombre(this.fieldBuscar.value).subscribe(data => {
+      this.service.listarPorNombre(this.fieldBuscar.value.toLowerCase()).subscribe(data => {
         this.lstRestaurantes = data;
       })
     }
     // SOLO CATEGORIA
     if (this.fieldBuscar?.value === null && this.fieldCategoria?.value != null && this.fieldDistrito?.value === null) {
       this.textoBuscado = this.fieldCategoria?.value;
-      this.service.listarCategoria(this.fieldCategoria.value).subscribe(data => {
+      this.service.listarCategoria(this.fieldCategoria.value.toLowerCase()).subscribe(data => {
         this.lstRestaurantes = data;
       })
     }
     // SOLO DISTRITO
     if (this.fieldBuscar?.value === null && this.fieldCategoria?.value === null && this.fieldDistrito?.value != null) {
       this.textoBuscado = this.fieldDistrito?.value;
-      this.service.listarDireccion(this.fieldDistrito.value).subscribe(data => {
+      this.service.listarDireccion(this.fieldDistrito.value.toLowerCase()).subscribe(data => {
         this.lstRestaurantes = data;
       })
     }
     // DOS -> NOMBRE Y DIRECCION
     if (this.fieldBuscar?.value != null && this.fieldCategoria?.value === null && this.fieldDistrito?.value != null) {
       this.textoBuscado = this.fieldBuscar?.value + ' - ' + this.fieldDistrito?.value;
-      this.service.listarNombreDireccion(this.fieldBuscar.value, this.fieldDistrito.value).subscribe(data => {
+      this.service.listarNombreDireccion(this.fieldBuscar.value.toLowerCase(), this.fieldDistrito.value.toLowerCase()).subscribe(data => {
         this.lstRestaurantes = data;
       })
     }
     // DOS -> CATEGORIA Y DISTRITO
     if (this.fieldBuscar?.value === null && this.fieldCategoria?.value != null && this.fieldDistrito?.value != null) {
       this.textoBuscado = this.fieldCategoria?.value + ' - ' + this.fieldDistrito?.value;
-      this.service.listarCategoriaDireccion(this.fieldCategoria.value, this.fieldDistrito.value).subscribe(data => {
+      this.service.listarCategoriaDireccion(this.fieldCategoria.value.toLowerCase(), this.fieldDistrito.value.toLowerCase()).subscribe(data => {
         this.lstRestaurantes = data;
       })
     }
     // DOS -> NOMBRE Y CATEGORIA
     if (this.fieldBuscar?.value != null && this.fieldCategoria?.value != null && this.fieldDistrito?.value === null) {
       this.textoBuscado = this.fieldBuscar?.value + ' - ' + this.fieldCategoria?.value;
-      this.service.listarNombreCategoria(this.fieldBuscar.value, this.fieldCategoria.value).subscribe(data => {
+      this.service.listarNombreCategoria(this.fieldBuscar.value.toLowerCase(), this.fieldCategoria.value.toLowerCase()).subscribe(data => {
         this.lstRestaurantes = data;
       })
     }
     // TRES -> NOMBRE, CATEGORIA Y DIRECCION
     if (this.fieldBuscar?.value != null && this.fieldCategoria?.value != null && this.fieldDistrito?.value != null) {
       this.textoBuscado = this.fieldBuscar?.value + ' - ' + this.fieldCategoria?.value + ' - ' + this.fieldDistrito?.value;
-      this.service.listarNombreCategoriaDireccion(this.fieldBuscar.value, this.fieldCategoria.value, this.fieldDistrito.value).subscribe(data => {
+      this.service.listarNombreCategoriaDireccion(this.fieldBuscar.value.toLowerCase(), this.fieldCategoria.value.toLowerCase(), this.fieldDistrito.value.toLowerCase()).subscribe(data => {
         this.lstRestaurantes = data;
       })
     }

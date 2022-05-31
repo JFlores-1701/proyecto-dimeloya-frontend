@@ -8,92 +8,79 @@
 <!-- CUERPO DEL MODAL -->
 <div class="modal-body">
 
+  <ng-container *ngIf="lstAperitivo.length === 0">
+    <div class="mt-4">
+      <img src="assets/img/loading.jpg" width="90%">
+    </div>
+    <div class="d-flex justify-content-center mt-3 mb-5" (click)="listar()">
+      <span>Ups! ocurrió un error </span>
+      <span class="fw-bold ms-2" style="color: #CF755A"> Inténtalo nuevamente</span>
+    </div>
+  </ng-container>
+
   <!-- lst platos -->
-  <ng-container>
+  <ng-container *ngIf="lstAperitivo.length > 0">
     <hr>
     <div>
       <h2>Aperitivos</h2>
     </div>
 
-    <div class="d-flex mb-3">
+    <div class="d-flex mb-3" *ngFor="let e of lstAperitivo">
       <div class="col-10 d-flex flex-column pe-2">
-        <span class="fs-6">Lorem ipsum dolor</span>
-        <span style="font-size: 12px">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+        <span class="fs-6">{{ e.nomPlato }}</span>
+        <span style="font-size: 12px">{{ e.desPlato }}</span>
       </div>
       <div class="col-2 d-flex justify-content-center">
-        <span class="fw-bold">9.90</span>
-      </div>
-    </div>
-
-    <div class="d-flex mb-3">
-      <div class="col-10 d-flex flex-column pe-2">
-        <span class="fs-6">Lorem ipsum dolor</span>
-        <span style="font-size: 12px">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
-      </div>
-      <div class="col-2 d-flex justify-content-center">
-        <span class="fw-bold">9.90</span>
+        <span class="fw-bold">{{ e.prePlato }}</span>
       </div>
     </div>
   </ng-container>
 
-  <ng-container>
+
+  <ng-container *ngIf="lstPiqueos.length > 0">
     <hr>
     <div>
       <h2>Piqueos</h2>
     </div>
 
-    <div class="d-flex mb-3">
+    <div class="d-flex mb-3" *ngFor="let e of lstPiqueos">
       <div class="col-10 d-flex flex-column pe-2">
-        <span class="fs-6">Lorem ipsum dolor</span>
-        <span style="font-size: 12px">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+        <span class="fs-6">{{ e.nomPlato }}</span>
+        <span style="font-size: 12px">{{ e.desPlato }}</span>
       </div>
       <div class="col-2 d-flex justify-content-center">
-        <span class="fw-bold">9.90</span>
-      </div>
-    </div>
-
-    <div class="d-flex mb-3">
-      <div class="col-10 d-flex flex-column pe-2">
-        <span class="fs-6">Lorem ipsum dolor</span>
-        <span style="font-size: 12px">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
-      </div>
-      <div class="col-2 d-flex justify-content-center">
-        <span class="fw-bold">9.90</span>
+        <span class="fw-bold">{{ e.prePlato }}</span>
       </div>
     </div>
   </ng-container>
 
-  <ng-container>
+
+  <ng-container *ngIf="lstMenu.length > 0">
     <hr>
     <div>
       <h2>Menu</h2>
     </div>
 
-    <div class="d-flex mb-3">
+    <div class="d-flex mb-3" *ngFor="let e of lstMenu">
       <div class="col-10 d-flex flex-column pe-2">
-        <span class="fs-6">Lorem ipsum dolor</span>
-        <span style="font-size: 12px">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+        <span class="fs-6">{{ e.nomPlato }}</span>
+        <span style="font-size: 12px">{{ e.desPlato }}</span>
       </div>
       <div class="col-2 d-flex justify-content-center">
-        <span class="fw-bold">9.90</span>
-      </div>
-    </div>
-
-    <div class="d-flex mb-3">
-      <div class="col-10 d-flex flex-column pe-2">
-        <span class="fs-6">Lorem ipsum dolor</span>
-        <span style="font-size: 12px">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
-      </div>
-      <div class="col-2 d-flex justify-content-center">
-        <span class="fw-bold">9.90</span>
+        <span class="fw-bold">{{ e.prePlato }}</span>
       </div>
     </div>
   </ng-container>
 
 </div>
 
-<!-- FOOTER DEL MODAL -->
+<!-- FOOTER DEL MODAL
 <div class="modal-footer">
   <button class="btn btn-primary px-4" style="background-color: #cf755a; border: #cf755a;"
-    (click)="aceptar()">Aceptar</button>
+          (click)="aceptar()">Aceptar
+  </button>
+  <button class="btn btn-primary px-4" style="background-color: #cf755a; border: #cf755a;"
+          (click)="listar()">listar
+  </button>
 </div>
+-->
