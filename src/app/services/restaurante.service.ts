@@ -1,6 +1,5 @@
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {Injectable} from '@angular/core';
-import {environment} from 'src/environments/environment';
 import {Restaurante} from '../models/restaurante.interface';
 
 @Injectable({
@@ -8,7 +7,17 @@ import {Restaurante} from '../models/restaurante.interface';
 })
 export class RestauranteService {
 
+  apiBase: string = "https://dimeloya.herokuapp.com/api/v1/";
+  results: Object[];
+  loading : boolean;
+
   constructor(private http: HttpClient) {
+    this.results = [];
+    this.loading = false;
+  }
+
+  listarFavoritos() {
+    return this.http.get<Restaurante[]>("https://dimeloya.herokuapp.com/api/v1/restaurante/obtenerFavoritos");
   }
 
   listarRestaurantes() {
